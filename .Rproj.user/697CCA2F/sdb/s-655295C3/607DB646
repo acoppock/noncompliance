@@ -1,0 +1,18 @@
+{
+    "contents" : "library(noncompliance)\nlibrary(testthat)\n\n\nload(\"~/Desktop/data_for_DSNC.rdata\")\n\ndf$X <- runif(n = 10000)\n\ntest <- estimate_cace_DS(Y, D_1, D_2, Z_1, Z_2, covariates = ~ X, pr_Z2 = .5, data = df)\ntest\n\ntest_1 <- summary(test,bootstrap = TRUE, sims = 50)\nprint(test_1)\n\n\ncace_test <- estimate_cace(Y=Y, D=D_1, Z=Z_1, data = df)\ncace_test <- estimate_cace(Y=Y, D=D_1, Z=Z_1, covariates = ~X, data = df)\nsummary(cace_test)\n\ndebugonce(estimate_cace)\n\nlibrary(randomizr)\nN <- 10000\n\ntype <- sample(c(\"NT\", \"C\"), N, replace = TRUE, prob = c(0.3, 0.7))\nZ <- complete_ra(N, condition_names = c(0, 1, 2))\nY <- rep(NA, N)\nD <- rep(NA, N)\n\nY[Z %in% c(0, 2) | Z %in% c(1) & type==\"NT\"] <-\n  rbinom(n = sum(Z %in% c(0, 2) | Z %in% c(1) & type==\"NT\"), size = 1, prob = 0.4)\n\nY[Z %in% c(1) & type==\"C\"] <-\n  rbinom(n = sum(Z %in% c(1) & type==\"C\"), size = 1, prob = 0.5)\n\nD[Z == 0 | Z %in% c(1, 2) & type==\"NT\"] <- 0\nD[Z %in% c(1, 2) & type==\"C\"] <- 1\n\ndf <- data.frame(Y, D, Z)\n\nestimate_3g(Y, D, Z, df)\n",
+    "created" : 1444531598351.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3488594457",
+    "id" : "607DB646",
+    "lastKnownWriteTime" : 1444536632,
+    "path" : "~/Documents/noncompliance/tests/testthat/test-noncompliance.R",
+    "project_path" : "tests/testthat/test-noncompliance.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
