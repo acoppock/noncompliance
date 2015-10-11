@@ -1,7 +1,9 @@
 Package: noncompliance
 Title: Estimators for Randomized Experiments Under Noncompliance
 Version: 0.0.0.9000
-Authors@R: person("Alexander", "Coppock", email = "acoppock@gmail.com", role = c("aut", "cre"))
+Author: c(
+    person("Coppock", "Alexander", email = "acoppock@gmail.com", role = c("aut", "cre"),
+    person("Kern", "Holger", email = hkern@fsu.edu, role = "aut"))
 Description: This suite of functions implements estimators of causal effects
 	in experiments encountering noncompliance. The three-group design 
 	(Gerber et al. 2010) and the double sampling design (Coppock 2015) are currently supported
