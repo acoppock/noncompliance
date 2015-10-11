@@ -1,0 +1,30 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+noncompliance is a package for analyzing randomized experiments that encounter noncompliance
+
+Installation from CRAN is easy:
+
+```{r,eval=FALSE}
+install.packages("randomizr")
+```
+
+If you'd like to install the most current development release, use the following code:
+
+```{r,eval=FALSE}
+install.packages("devtools")
+devtools::install_github("acoppock/noncompliance")
+```
